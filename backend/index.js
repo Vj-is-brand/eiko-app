@@ -16,7 +16,6 @@ app.use(session({
     secret: process.env.KEY,
     resave: false,
     saveUninitialized: false
-
 }))
 
 
