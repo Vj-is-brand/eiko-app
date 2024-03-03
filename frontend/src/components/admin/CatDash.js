@@ -11,7 +11,7 @@ function CategoryDash() {
         name: '',
     });
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [isEditing, setIsEditing] = useState()
+    const [isEditing, setIsEditing] = useState();
 
     const validateForm = () => {
         let valid = true;
@@ -98,7 +98,7 @@ function CategoryDash() {
     const handleEditClick = (category) => {
         setSelectedCategory(category);
         setNewCategory({
-            name: category.name, 
+            name: category.name,
         });
         setIsEditing(true);
         setShowForm(true);
@@ -165,7 +165,7 @@ function CategoryDash() {
                                                     type="submit"
                                                     className="btn btn-primary mt-2 form-control"
                                                 >
-                        {isEditing ? 'Update Category' : 'Add Category'}
+                                                    {isEditing ? 'Update Category' : 'Add Category'}
                                                 </button>
                                             </form>
                                         </div>
@@ -176,19 +176,34 @@ function CategoryDash() {
                             {!showForm && (
                                 <div>
                                     <h2>Category List</h2>
-                                    <ul>
-                                        {categories.length > 0 ? (
-                                            categories.map((category) => (
-                                                <li key={category._id}>
-                                                    {category.name}
-                                                    <button onClick={() => handleEditClick(category)}>Edit</button>
-                                                    <button onClick={() => handleDeleteClick(category._id)}>Delete</button>
-                                                </li>
-                                            ))
-                                        ) : (
-                                            <li>No categories found</li>
-                                        )}
-                                    </ul>
+                                    <table className='table table-dark table-hover'>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {categories.length > 0 ? (
+                                                categories.map((category) => (
+                                                    <tr key={category._id}>
+                                                        <td>{category.name}</td>
+                                                        <td>
+                                                            <button className='btn btn-success me-2' onClick={() => handleEditClick(category)}>Edit</button>
+                                                            <button className='btn btn-danger' onClick={() => handleDeleteClick(category._id)}>Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            ) : (
+                                                <tr>
+                                                    <td colSpan="2">No categories found</td>
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+
+
+
                                 </div>
                             )}
                         </div>
