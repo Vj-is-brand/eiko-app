@@ -6,6 +6,7 @@ import Login from './components/admin/Login';
 import Register from './components/admin/Register';
 import Admindash from './components/admin/AdminDash';
 import ProductDash from './components/admin/ProductDash';
+import CategoryDash from './components/admin/CatDash';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<Admindash />} />
         <Route path='/productdash' element={<ProductDash />} />
+        <Route path='/categorydash' element={<CategoryDash />} />
+
         
       </Routes>
     </BrowserRouter>
