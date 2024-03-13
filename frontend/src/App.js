@@ -7,6 +7,7 @@ import Register from './components/admin/Register';
 import Admindash from './components/admin/AdminDash';
 import ProductDash from './components/admin/ProductDash';
 import CategoryDash from './components/admin/CatDash';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/dashboard' element={<Admindash />} />
         <Route path='/productdash' element={<ProductDash />} />
         <Route path='/categorydash' element={<CategoryDash />} />
+        <Route path='/cart' element={<Cart />} />
 
         
       </Routes>

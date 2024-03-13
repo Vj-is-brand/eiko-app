@@ -9,6 +9,32 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
+// get details of products
+exports.getProductDetails = (async (req, res, next) => {
+    try {
+      const product = await Product.findById(req.params.id);
+  
+      if (!product) {
+        return res.status(404).json({
+          success: false,
+          error: "Product not found",
+        });
+      }
+  
+      res.status(200).json({
+        success: true,
+        product,
+      });
+    } catch (error) {
+      // Handle any errors that occur during the product retrieval process
+      return res.status(500).json({
+        success: false,
+        error: "Internal Server Error",
+      });
+    }
+  });
+  
+
 exports.addProduct = async (req, res) => {
     try {
         const { name, shortDescription, rating, price, offPrice, category, subcategory } = req.body; // Destructure subcategory from request body

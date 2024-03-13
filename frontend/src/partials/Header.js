@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useSelector} from "react-redux";
+import "./Header.css";
 
 
 function Header() {
+    const { cartItems } = useSelector((state) => state.cart);
     return ( 
         <section className="header mb-3">
                         <nav className="sec-1 border-bottom">
@@ -89,8 +92,9 @@ function Header() {
                                                 </div>
                                             </div>
                                         </form>
-                                        <div className="d-flex header-icons d-none d-lg-flex">
+                                        <div className="d-flex header-icons d-none d-lg-flex notifications-icon-container">
                                             <Link to="/cart">
+                                               { cartItems.length > 0 && (<div class="notifications-count">{cartItems.length}</div>)}
                                                 <i className="bi bi-bag-heart"></i>
                                             </Link>
                                             <Link to="/profile">
