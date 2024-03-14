@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart, removeItemFromCart } from "../../actions/CartAction";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { Typography } from "@material-ui/core";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Footer from "../../partials/Footer";
 import Header from "../../partials/Header";
@@ -14,6 +14,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const { cartItems } = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   console.log("cartItems are :", cartItems);
 
@@ -36,12 +37,7 @@ const Cart = () => {
   }
 
   const checkoutHandler = () => {
-    // if (isAuthenticated) {
-    //   navigate("/shipping", { replace: true });
-    // } else {
-    //   alert.message("Please login see the resources");
-    //   navigate("/login", { replace: true });
-    // }
+    navigate("/shipping", { replace: true });
   };
 
   return (
@@ -85,7 +81,7 @@ const Cart = () => {
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
               <div></div>
             </div>
