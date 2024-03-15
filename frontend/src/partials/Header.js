@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector} from "react-redux";
+import Logo from "../images/logo.png";
 import "./Header.css";
 
 
@@ -50,7 +51,7 @@ function Header() {
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
                                     <Link className="navbar-brand" to="/">
-                                        <img src="./images/goldcroplogo.svg" alt="" />
+                                        <img src={Logo} alt="" style={{ maxWidth: '100px' }}/>
                                     </Link>
                                     <div className="d-flex header-icons d-lg-none">
                                         <Link to="/cart">

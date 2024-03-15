@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from "../images/logo.png";
 import Modal from 'react-bootstrap/Modal';
 
 
@@ -24,7 +25,7 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className='col-md-3 mb-5 m-md-0'>
-                            <img src="./images/goldcroplogo.svg" alt="Footer Logo" className="img-fluid" style={{ maxWidth: '100px' }} />
+                            <img src={Logo} alt="Footer Logo" className="img-fluid" style={{ maxWidth: '100px' }} />
                         </div>
 
                         <div className="col-md-6 mb-5 m-md-0">

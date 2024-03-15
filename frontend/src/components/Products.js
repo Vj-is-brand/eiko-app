@@ -98,11 +98,7 @@ const Products = () => {
     const cartItemExist = cartItems.find((item) => item.product === productId);
     console.log("cartItemExist :", cartItemExist);
 
-    if (cartItemExist) {
-      const newQuantity = cartItemExist.quantity + 1;
-      dispatch(addItemsToCart(productId, newQuantity));
-      alert.success("Item quantity increased");
-    } else {
+    if (!cartItemExist) {
       // If the product is not in the cart, add it with a quantity of 1
       dispatch(addItemsToCart(productId, 1));
       alert.success("Item added to cart successfully");
@@ -291,8 +287,9 @@ const Products = () => {
                               <button
                                 onClick={() => handleAddToCart(product._id)}
                                 className="product-add-to-cart"
+                                // disabled={cartItems.some(item => item.product === product._id)}
                               >
-                                Add
+                                { cartItems.some(item => item.product === product._id) ? "Added to bag" : "Add"}
                               </button>
                             </div>
                           </div>
