@@ -98,7 +98,7 @@ function Header() {
                                                { cartItems.length > 0 && (<div class="notifications-count">{cartItems.length}</div>)}
                                                 <i className="bi bi-bag-heart"></i>
                                             </Link>
-                                            <Link to="/profile">
+                                            <Link to="/user/login">
                                                 <i className="bi bi-person"></i>
                                             </Link>
                                         </div>

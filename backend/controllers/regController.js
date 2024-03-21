@@ -5,10 +5,12 @@ const bcrypt = require('bcrypt')
 exports.register = async (req, res) => {
     try {
         const { name, email, password, repassword } = req.body
+        console.log("password:",password);
+        console.log("repassword:",repassword);
         const cpass = await bcrypt.hash(password, 10)
         const usercheck = await Reg.findOne({ email: email })
         if (usercheck == null) {
-            const record = new Reg({ email: email, password: cpass, name: name, Repassword: repassword })
+            const record = new Reg({ email: email, password: cpass, name: name, repassword: repassword })
             record.save()
             res.status(201).json({
                 message: `successfully email has been registered`,
