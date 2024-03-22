@@ -64,7 +64,7 @@ const Mainpage = () => {
             </button>
           )}
           {/* Header start */}
-          <Header />
+          {/* <Header /> */}
           {/* Header End */}
 
           {/* Catogery section start */}
@@ -319,7 +319,7 @@ const Mainpage = () => {
             </div>
           </section>
 
-          <Footer />
+          {/* <Footer /> */}
         </animated.div>
       )}
     </div>

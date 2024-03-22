@@ -6,6 +6,7 @@ import Footer from "../partials/Footer";
 import { addItemsToCart } from "../actions/CartAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
+import { SERVER_URL } from "../constants/ServerConstant";
 
 const Products = () => {
   const [rating, setRating] = useState(4.3);
@@ -31,7 +32,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/products"); // Update the URL to match your backend endpoint
+        const response = await fetch(SERVER_URL + "/api/products"); // Update the URL to match your backend endpoint
         const data = await response.json();
         setProducts(data);
         setShowPreloader(false);
@@ -87,7 +88,6 @@ const Products = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   ); // Use sortedProducts
-
 
   // added by vijay shankar handleAddToCart
   const handleAddToCart = (productId) => {
@@ -168,7 +168,7 @@ const Products = () => {
               <i className="bi bi-arrow-up"></i>
             </button>
           )}
-          <Header />
+          {/* <Header /> */}
 
           <div className="productcontainer">
             <div className="container">
@@ -230,72 +230,77 @@ const Products = () => {
                         </div>
                       </section>
                       {currentProducts.map((product, index) => (
-                        <div className="col-md-4" key={product._id}>
-                          <div className="card mb-4 border-0 shadow">
-                            <animated.img
-                              src={product.image}
-                              alt={product.name}
-                              className="card-img-top"
-                              style={imageProps}
-                            />
-                            <div className="card-body">
-                              <h5 className="card-title fw-bold text-uppercase">
-                                {product.name}
-                              </h5>
-                              <h6 className="card-text fw-light">
-                                <td>
-                                  {showFullDescriptions[product._id] ? (
-                                    <>
-                                      {product.shortDescription}{" "}
-                                      <Link
-                                        onClick={() => handleClick(product._id)}
-                                      >
-                                        Show less
-                                      </Link>
-                                    </>
-                                  ) : (
-                                    <>
-                                      {product.shortDescription.length > 60 ? (
-                                        <span>
-                                          {product.shortDescription.substring(
-                                            0,
-                                            60
-                                          )}{" "}
-                                          <Link
-                                            onClick={() =>
-                                              handleClick(product._id)
-                                            }
-                                          >
-                                            Show more
-                                          </Link>
-                                        </span>
-                                      ) : (
-                                        product.shortDescription
-                                      )}
-                                    </>
-                                  )}
-                                </td>
-                              </h6>
-                              <p className="card-text product-rating">
-                                <i className="bi bi-star-fill"></i>
-                                <strong> {product.rating}</strong>
-                              </p>
+                        <div className="col-md-6 col-lg-4" key={product._id}>
+                          <Link to={`/products/${product._id}`}>
+                            <div className="card mb-4 border-0 shadow">
+                              <animated.img
+                                src={"http://localhost:5000/" + product.image}
+                                alt={product.name}
+                                className="card-img-top"
+                                style={imageProps}
+                              />
+                              <div className="card-body">
+                                <h5 className="card-title fw-bold text-uppercase">
+                                  {product.name}
+                                </h5>
+                                <h6 className="card-text fw-light">
+                                  <td>
+                                    {showFullDescriptions[product._id] ? (
+                                      <>
+                                        {product.shortDescription}{" "}
+                                        <Link
+                                          onClick={() =>
+                                            handleClick(product._id)
+                                          }
+                                        >
+                                          Show less
+                                        </Link>
+                                      </>
+                                    ) : (
+                                      <>
+                                        {product.shortDescription.length >
+                                        60 ? (
+                                          <span>
+                                            {product.shortDescription.substring(
+                                              0,
+                                              60
+                                            )}{" "}
+                                            <Link
+                                              onClick={() =>
+                                                handleClick(product._id)
+                                              }
+                                            >
+                                              Show more
+                                            </Link>
+                                          </span>
+                                        ) : (
+                                          product.shortDescription
+                                        )}
+                                      </>
+                                    )}
+                                  </td>
+                                </h6>
+                                <p className="card-text product-rating">
+                                  <i className="bi bi-star-fill"></i>
+                                  <strong> {product.rating}</strong>
+                                </p>
+                              </div>
+                              <div className="product-info">
+                                <strong className="product-price">
+                                  ₹{product.price}
+                                </strong>
+                                <span className="product-off-price">
+                                  ₹{product.offPrice}
+                                </span>
+                                <button
+                                  onClick={() => handleAddToCart(product._id)}
+                                  className="product-add-to-cart"
+                                >
+                                  Add
+                                </button>
+                              </div>
                             </div>
-                            <div className="product-info">
-                              <strong className="product-price">
-                                {product.price}
-                              </strong>
-                              <span className="product-off-price">
-                                {product.offPrice}
-                              </span>
-                              <button
-                                onClick={() => handleAddToCart(product._id)}
-                                className="product-add-to-cart"
-                              >
-                                Add
-                              </button>
-                            </div>
-                          </div>
+                          </Link>
                         </div>
                       ))}
                     </div>
@@ -328,7 +333,7 @@ const Products = () => {
             </ul>
           </nav>
 
-          <Footer />
+          {/* <Footer /> */}
 
           {error && <div>Error: {error.message}</div>}
         </>

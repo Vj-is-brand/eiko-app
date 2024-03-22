@@ -40,16 +40,17 @@ const Shipping = () => {
       alert.error("Phone Number should be 10 digits Long");
       return;
     }
-    dispatch(saveShippingInfo({address, country, state, city, pinCode, phoneNo}));
+    dispatch(
+      saveShippingInfo({ address, country, state, city, pinCode, phoneNo })
+    );
     navigate("/orders/confirm");
   };
-
 
   return (
     <>
       <>
         {/* <MetaData title="Shipping Details"/> */}
-        <Header />
+        {/* <Header /> */}
         <CheckoutSteps activeStep={0} />
         <div className="shippingContainer">
           <div className="shippingBox">
@@ -145,7 +146,7 @@ const Shipping = () => {
             </form>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     </>
   );

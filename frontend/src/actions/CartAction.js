@@ -4,21 +4,22 @@ import {
   REMOVE_CART_ITEM,
   SAVE_SHIPPING_INFO,
 } from "../constants/CartContant";
+import { SERVER_URL } from "../constants/ServerConstant";
 
 //add to cart
-export const addItemsToCart = (id,quantity) => async (dispatch, getState) => {
+export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
   // Make the axios GET request to fetch product data
-  const { data } = await axios.get(`/api/product/${id}`);
+  const { data } = await axios.get(SERVER_URL + `/api/product/${id}`);
   // console.log("image:",data.product.image);
   // Dispatch the action with the retrieved product data
   dispatch({
     type: ADD_TO_CART,
     payload: {
-      product: data.product._id,//using product as id
+      product: data.product._id, //using product as id
       name: data.product.name,
       price: data.product.price,
       image: data.product.image,
-      offPrice:data.product.offPrice,
+      offPrice: data.product.offPrice,
       quantity,
     },
   });

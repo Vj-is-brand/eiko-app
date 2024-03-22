@@ -35,7 +35,7 @@ const ConfirmOrders = () => {
 
   return (
     <>
-    <Header />
+      {/* <Header /> */}
       <CheckoutSteps activeStep={1} />
       <div className="confirmOrderPage">
         <div>
@@ -63,7 +63,7 @@ const ConfirmOrders = () => {
                 cartItems.map((item) => (
                   <div key={item.product}>
                     <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
+                    <Link to={`/products/${item.product}`}>
                       {item.name}
                       {console.log(item.image)}
                     </Link>{" "}
@@ -106,7 +106,7 @@ const ConfirmOrders = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
