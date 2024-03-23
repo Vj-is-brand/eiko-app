@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Logo from "../../../images/logo.png";
 
 
 function Header() {
@@ -20,7 +21,7 @@ function Header() {
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
                                     <Link className="navbar-brand" to="/dashboard">
-                                        <img src="./images/goldcroplogo.svg" alt="" />
+                                        <img src={Logo} alt="" />
                                     </Link>
                                     <div className="d-flex header-icons d-lg-none">
                                         <Link to="/cart">
