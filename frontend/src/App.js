@@ -13,6 +13,7 @@ import ConfirmOrders from "./components/Cart/ConfirmOrders.js";
 import ProductDetails from "./components/ProductDetails.js";
 import Footer from "./partials/Footer.js";
 import Header from "./partials/Header.js";
+import Profile from "./components/Profile.js";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Mainpage />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Admindash />} />

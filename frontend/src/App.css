@@ -120,3 +120,26 @@
 .col-md-6 a:hover {
   color: #000;
 }
+
+.order-container {
+  width: 200px;
+  min-height: 230px;
+  box-sizing: border-box;
+}
+
+.color-black {
+  color: #000;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-info-img {
+  width: auto;
+  height: auto;
+}
+
+.user-info-details {
+  padding: 5px;
+}

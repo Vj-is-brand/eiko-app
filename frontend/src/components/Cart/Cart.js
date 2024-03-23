@@ -18,7 +18,6 @@ const Cart = () => {
 
   console.log("cartItems are :", cartItems);
 
-
   const increseCartyQty = (id, quantity) => {
     const newQty = quantity + 1;
     if (5 <= quantity) return;
@@ -30,11 +29,10 @@ const Cart = () => {
     if (1 >= quantity) return;
     dispatch(addItemsToCart(id, newQty));
   };
-  
 
-  const deleteItemHandler = (id) =>{
+  const deleteItemHandler = (id) => {
     dispatch(removeItemFromCart(id));
-  }
+  };
 
   const checkoutHandler = () => {
     navigate("/shipping", { replace: true });
@@ -42,7 +40,7 @@ const Cart = () => {
 
   return (
     <>
-    <Header />
+      {/* <Header /> */}
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <MdRemoveShoppingCart />
@@ -58,24 +56,42 @@ const Cart = () => {
               <p>SubTotal</p>
             </div>
 
-            {cartItems && cartItems.map((item,index)=>(
-              <div className="cartContainer" key={index}>
-              <CartItemCard item={item} deleteCartItem={deleteItemHandler} />
-              <div className="cartInput">
-                <button onClick={()=>increseCartyQty(item.product,item.quantity)}>+</button>
-                <input type="number" value={item.quantity} />
-                <button onClick={()=>decreseCartyQty(item.product,item.quantity)}>-</button>
-              </div>
-              <div className="cartSubtotal">{`${item.price * item.quantity}`}</div>
-            </div>
-            ))}
+            {cartItems &&
+              cartItems.map((item, index) => (
+                <div className="cartContainer" key={index}>
+                  <CartItemCard
+                    item={item}
+                    deleteCartItem={deleteItemHandler}
+                  />
+                  <div className="cartInput">
+                    <button
+                      onClick={() =>
+                        increseCartyQty(item.product, item.quantity)
+                      }
+                    >
+                      +
+                    </button>
+                    <input type="number" value={item.quantity} />
+                    <button
+                      onClick={() =>
+                        decreseCartyQty(item.product, item.quantity)
+                      }
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div className="cartSubtotal">{`${
+                    item.price * item.quantity
+                  }`}</div>
+                </div>
+              ))}
             <div className="cartGrossProfit">
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
                 <p>{`₹${cartItems.reduce(
                   (accum, currentVal) =>
-                    accum + currentVal.price* currentVal.quantity,
+                    accum + currentVal.price * currentVal.quantity,
                   0
                 )}`}</p>
               </div>
@@ -88,7 +104,7 @@ const Cart = () => {
           </div>
         </>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

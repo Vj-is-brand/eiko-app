@@ -147,7 +147,7 @@ const ProductDetail = () => {
                 >
                   {/* {productData.?image.map((i) => ( */}
                   <div>
-                    <img src={SERVER_URL + productData?.image} alt="" />
+                    <img src={SERVER_URL + "/" + productData?.image} alt="" />
                   </div>
                   {/* ))}  */}
                 </Carousel>
