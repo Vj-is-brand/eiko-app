@@ -35,28 +35,33 @@ exports.register = catchAsyncError(async (req, res, next) => {
     sendToken(user, 201, res);
   });
   
-  //USER LOGIN----------
   exports.logincheck = catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
-  
-    //checking if user has given both email and password
+
+    // Check if email and password are provided
     if (!email || !password) {
-      return next(new ErrorHandler("Please enter email and password", 400));
+        return next(new ErrorHandler("Please enter email and password", 400));
     }
+
+    // Authenticate user (check email and password)
     const user = await Reg.findOne({ email }).select("+password");
-  
-    if (!user) {
-      return next(new ErrorHandler("Invalid email or password", 401));
+
+    // If user not found or password doesn't match, return error
+    if (!user || !(await user.comparePassword(password))) {
+        return next(new ErrorHandler("Invalid email or password", 401));
     }
-  
-    const isPasswordMatch = await user.comparePassword(password);
-  
-    if (!isPasswordMatch) {
-      return next(new ErrorHandler("Enter valid email or password", 401));
-    }
-  
-    sendToken(user, 200, res);
-  });
+
+    // Start session and store user data
+    req.session.user = user;
+
+    // Send success response
+    res.status(200).json({
+        status: 200,
+        message: "Login successful",
+        user: user // Optionally, you can send user data in the response
+    });
+});
+
   
   //LOGOUT--------
   exports.userLogOut = catchAsyncError(async (req, res, next) => {

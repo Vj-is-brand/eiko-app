@@ -2,12 +2,14 @@ import { legacy_createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { cartReducer } from "./reducer/CartReducer";
+import { authReducer } from './reducer/AuthReducer';
 import { categoryReducer } from "./reducer/categoryReducer";
 import { userReducer } from "./reducer/UserReducer";
 
 const reducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
+  auth: authReducer,
   category: categoryReducer,
 });
 
@@ -24,6 +26,10 @@ let initialState = {
     categoryItems: localStorage.getItem("categoryItems")
       ? JSON.parse(localStorage.getItem("categoryItems"))
       : [],
+  },
+  auth: {
+    isAuthenticated: false,
+    user: null, // You can add more user related fields here
   },
 };
 

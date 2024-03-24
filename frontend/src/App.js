@@ -11,6 +11,7 @@ import Cart from './components/Cart/Cart';
 import Shipping from './components/Cart/Shipping';
 import ConfirmOrders from './components/Cart/ConfirmOrders';
 import LoginSignup from './components/user/LoginSignup';
+import Profile from './components/user/Profile';
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path='/shipping' element={<Shipping />} />
         <Route path='/orders/confirm' element={<ConfirmOrders />} />
         <Route path='/user/login' element={<LoginSignup />} />
+        <Route path='/user/profile' element={<Profile />} />
+
 
 
         

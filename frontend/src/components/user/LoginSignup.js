@@ -30,13 +30,15 @@ const LoginSignup = () => {
     name: "",
     email: "",
     password: "",
+    repassword: "",
   });
 
   const { name, email, password, repassword } = user;
 
-  const [avatar, setAvatar] = useState("/Profile.png");
-  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [emailError, setEmailError] = useState("");
 
+  
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -45,12 +47,20 @@ const LoginSignup = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    // Check if password and confirm password match
+  if (password !== repassword) {
+    alert.error("Passwords do not match");
+    return; // Stop further execution
+  }
+  if (email === "existing@example.com") {
+    setEmailError("Email already exists");
+    return; // Stop further execution
+  }
 
+    const myForm = new FormData();
     myForm.set("name",name);
     myForm.set("email",email);
     myForm.set("password",password);
-    myForm.set("avatar",avatar);
     console.log(myForm);
 
     dispatch(register(user));
@@ -62,6 +72,15 @@ const LoginSignup = () => {
       ...prevUser,
       [name]: value,
     }));
+
+    if (name === "repassword") {
+      setPasswordMatch(value === password); // Update password match state
+    }
+   
+    if (name === "email") {
+      setEmailError(""); // Reset email error when input changes
+    }
+
   };
 
   // const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -182,7 +201,7 @@ const LoginSignup = () => {
               />
             </div>
 
-            {/* <div className="signUpPassword">
+            <div className="signUpPassword">
               <AiOutlineLock />
               <input
                 type="password"
@@ -192,9 +211,9 @@ const LoginSignup = () => {
                 value={repassword}
                 onChange={registerDataChange}
               />
-            </div> */}
+            </div>
 
-            <div id="registerImage">
+            {/* <div id="registerImage">
                 <img src={avatarPreview} alt="Avatar Preview" />
                 <input
                   type="file"
@@ -202,7 +221,7 @@ const LoginSignup = () => {
                   accept="image/*"
                   onChange={registerDataChange}
                 />
-              </div>
+              </div> */}
             <input type="submit" value="register" className="signUpBtn" />
           </form>
         </div>

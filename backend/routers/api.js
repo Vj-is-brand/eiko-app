@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const multer = require('multer');
 const bodyParser = require('body-parser');
-
 const regc = require('../controllers/regController');
 const productController = require('../controllers/productController');
 const categoryController = require('../controllers/categoryController');
@@ -23,16 +22,23 @@ const upload = multer({
   },
 });
 
-// for parsing application/json
 router.use(bodyParser.json()); 
-
-// for parsing application/xwww-
 router.use(bodyParser.urlencoded({ extended: true })); 
-//form-urlencoded
-
-// for parsing multipart/form-data
 router.use(upload.array()); 
-// router.use(express.static('public'));
+
+const isAuthenticated = (req, res, next) => {
+  // Check if user is logged in
+  if (!req.session || !req.session.user) {
+      return res.status(401).json({
+          status: 401,
+          message: "Unauthorized: Please log in to access this resource"
+      });
+  }
+  next();
+};
+
+
+
 
 router.post('/reg', regc.register);
 router.post('/logincheck', regc.logincheck);
@@ -45,6 +51,12 @@ router.get('/categories', categoryController.getAllCategories);
 router.post('/categories', categoryController.addCategory);
 router.put('/categories/:id', categoryController.updateCategory);
 router.delete('/categories/:id', categoryController.deleteCategory);
+router.get('/user/profile', (req, res) => {
+  const user = req.session.user;
+  res.json({
+      user: user
+  });
+});
 
 
 module.exports = router;
