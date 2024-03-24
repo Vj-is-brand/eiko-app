@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // userConstants.js
 
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";

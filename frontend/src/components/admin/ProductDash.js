@@ -20,7 +20,11 @@ function ProductDash() {
   const [subCategory, setSubCategory] = useState("");
   const [subCategories, setSubCategories] = useState([]); // State for subcategories
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const { categoryItems } = useSelector((state) => state.category);
+=======
+  const { categoryItems } = useSelector((state)=>state.category);
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
 
   // State hooks for new product and selected product details
   const [newProduct, setNewProduct] = useState({
@@ -427,6 +431,7 @@ function ProductDash() {
                           />
                           {selectedProductIndex !== null
                             ? imagePreviewUrl && (
+<<<<<<< HEAD
                               <img
                                 src={imagePreviewUrl}
                                 alt="Update Product"
@@ -442,6 +447,23 @@ function ProductDash() {
                                 className="img-thumbnail mt-2"
                               />
                             )}
+=======
+                                <img
+                                  src={imagePreviewUrl}
+                                  alt="Update Product"
+                                  width={"100px"}
+                                  className="img-thumbnail mt-2"
+                                />
+                              )
+                            : imagePreviewUrl && (
+                                <img
+                                  src={imagePreviewUrl}
+                                  alt="Add Product"
+                                  width={"100px"}
+                                  className="img-thumbnail mt-2"
+                                />
+                              )}
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
                         </div>
                         <div className="form-group">
                           <label>Name:</label>
@@ -533,7 +555,11 @@ function ProductDash() {
                             <div className="text-danger">{offPriceError}</div>
                           )}
                         </div>
+<<<<<<< HEAD
                         <div className="form-group">
+=======
+                        {/* <div className="form-group">
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
                           <label> Product Category:</label>
                           <select
                             name="category"
@@ -552,8 +578,34 @@ function ProductDash() {
                             <option value="Cakes">Cakes</option>
                             <option value="Gifting">Gifting</option>
                           </select>
+<<<<<<< HEAD
                         </div>
                         {/* <div className="form-group">
+=======
+                        </div> */}
+
+                        <div className="form-group">
+    <label>Product Category:</label>
+    <select
+        name="category"
+        value={newProduct.category}
+        onChange={(e) => {
+            handleProductInputChange(e);
+            setSubCategory("");
+        }}
+        className="form-control"
+    >
+        <option value="">Select a Category....</option>
+        {categoryItems.map((category) => (
+            <option key={category._id} value={category._id}>
+                {category.name}
+            </option>
+        ))}
+    </select>
+</div>
+
+                        <div className="form-group">
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
                           <label>Sub Category:</label>
                           <select
                             name="subCategory"
@@ -573,7 +625,11 @@ function ProductDash() {
                               </option>
                             ))}
                           </select>
+<<<<<<< HEAD
                         </div> */}
+=======
+                        </div>
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
 
                         <button
                           type="submit"

@@ -30,15 +30,24 @@ const LoginSignup = () => {
     name: "",
     email: "",
     password: "",
+<<<<<<< HEAD
     repassword: "",
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
   });
 
   const { name, email, password, repassword } = user;
 
+<<<<<<< HEAD
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [emailError, setEmailError] = useState("");
 
   
+=======
+  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -47,6 +56,7 @@ const LoginSignup = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD
     // Check if password and confirm password match
   if (password !== repassword) {
     alert.error("Passwords do not match");
@@ -61,6 +71,14 @@ const LoginSignup = () => {
     myForm.set("name",name);
     myForm.set("email",email);
     myForm.set("password",password);
+=======
+    const myForm = new FormData();
+
+    myForm.set("name",name);
+    myForm.set("email",email);
+    myForm.set("password",password);
+    myForm.set("avatar",avatar);
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
     console.log(myForm);
 
     dispatch(register(user));
@@ -72,6 +90,7 @@ const LoginSignup = () => {
       ...prevUser,
       [name]: value,
     }));
+<<<<<<< HEAD
 
     if (name === "repassword") {
       setPasswordMatch(value === password); // Update password match state
@@ -81,6 +100,8 @@ const LoginSignup = () => {
       setEmailError(""); // Reset email error when input changes
     }
 
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
   };
 
   // const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -201,7 +222,11 @@ const LoginSignup = () => {
               />
             </div>
 
+<<<<<<< HEAD
             <div className="signUpPassword">
+=======
+            {/* <div className="signUpPassword">
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
               <AiOutlineLock />
               <input
                 type="password"
@@ -211,9 +236,15 @@ const LoginSignup = () => {
                 value={repassword}
                 onChange={registerDataChange}
               />
+<<<<<<< HEAD
             </div>
 
             {/* <div id="registerImage">
+=======
+            </div> */}
+
+            <div id="registerImage">
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
                 <img src={avatarPreview} alt="Avatar Preview" />
                 <input
                   type="file"
@@ -221,7 +252,11 @@ const LoginSignup = () => {
                   accept="image/*"
                   onChange={registerDataChange}
                 />
+<<<<<<< HEAD
               </div> */}
+=======
+              </div>
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
             <input type="submit" value="register" className="signUpBtn" />
           </form>
         </div>

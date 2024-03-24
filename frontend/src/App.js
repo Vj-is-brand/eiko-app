@@ -11,7 +11,10 @@ import Cart from './components/Cart/Cart';
 import Shipping from './components/Cart/Shipping';
 import ConfirmOrders from './components/Cart/ConfirmOrders';
 import LoginSignup from './components/user/LoginSignup';
+<<<<<<< HEAD
 import Profile from './components/user/Profile';
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
 
 
 function App() {
@@ -30,8 +33,11 @@ function App() {
         <Route path='/shipping' element={<Shipping />} />
         <Route path='/orders/confirm' element={<ConfirmOrders />} />
         <Route path='/user/login' element={<LoginSignup />} />
+<<<<<<< HEAD
         <Route path='/user/profile' element={<Profile />} />
 
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
 
 
         

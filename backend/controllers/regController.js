@@ -13,10 +13,15 @@ exports.register = catchAsyncError(async (req, res, next) => {
     //   width: 150,
     //   crop: "scale",
     // });
+<<<<<<< HEAD
   console.log('here is req data:', req.body)
 
     const { name, email, password } = req.body;
 
+=======
+  
+    const { name, email, password } = req.body;
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
   
     const user = await Reg.create({
       name,
@@ -35,6 +40,7 @@ exports.register = catchAsyncError(async (req, res, next) => {
     sendToken(user, 201, res);
   });
   
+<<<<<<< HEAD
   exports.logincheck = catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -62,6 +68,30 @@ exports.register = catchAsyncError(async (req, res, next) => {
     });
 });
 
+=======
+  //USER LOGIN----------
+  exports.logincheck = catchAsyncError(async (req, res, next) => {
+    const { email, password } = req.body;
+  
+    //checking if user has given both email and password
+    if (!email || !password) {
+      return next(new ErrorHandler("Please enter email and password", 400));
+    }
+    const user = await Reg.findOne({ email }).select("+password");
+  
+    if (!user) {
+      return next(new ErrorHandler("Invalid email or password", 401));
+    }
+  
+    const isPasswordMatch = await user.comparePassword(password);
+  
+    if (!isPasswordMatch) {
+      return next(new ErrorHandler("Enter valid email or password", 401));
+    }
+  
+    sendToken(user, 200, res);
+  });
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
   
   //LOGOUT--------
   exports.userLogOut = catchAsyncError(async (req, res, next) => {

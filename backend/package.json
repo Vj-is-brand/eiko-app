@@ -13,7 +13,10 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+<<<<<<< HEAD
     "connect-mongodb-session": "^5.0.0",
+=======
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.4",

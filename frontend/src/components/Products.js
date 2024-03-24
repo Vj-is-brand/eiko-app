@@ -31,9 +31,14 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+<<<<<<< HEAD
         const response = await fetch("/api/products"); 
         const data = await response.json();
         console.log("Fetched Products:", data); 
+=======
+        const response = await fetch("/api/products"); // Update the URL to match your backend endpoint
+        const data = await response.json();
+>>>>>>> 7dc58301dba6451e391c03ca79b3497b85caf71b
         setProducts(data);
         setShowPreloader(false);
       } catch (error) {
